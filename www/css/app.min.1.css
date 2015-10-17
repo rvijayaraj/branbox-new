@@ -10337,8 +10337,8 @@ body #content {
   box-shadow: 0 0 10px rgba(51, 51, 51, 0.38);
   top: 65px;
   height: calc(100% - 65px);
-  -webkit-transform: translate3d(-268px, 0, 0);
-  transform: translate3d(-268px, 0, 0);
+  /*-webkit-transform: translate3d(-268px, 0, 0);*/
+  /*transform: translate3d(-268px, 0, 0);*/
   z-index: 5;
   width: 268px;
   overflow: hidden;
@@ -10347,8 +10347,8 @@ body #content {
   -webkit-transition: all;
   -o-transition: all;
   transition: all;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
+  /*-webkit-transition-duration: 300ms;*/
+  /*transition-duration: 300ms;*/
 }
 
 #sidebar .sidebar-inner {
@@ -10407,7 +10407,7 @@ body #content {
   -webkit-transition: all;
   -o-transition: all;
   transition: all;
-  -webkit-transition-duration: 300ms;
+ /* -webkit-transition-duration: 300ms;*/
   transition-duration: 300ms;
 }
 
