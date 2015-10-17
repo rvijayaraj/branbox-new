@@ -1,0 +1,133 @@
+<ion-view>
+    <div class="card">
+        <div class="card-body card-padding">
+            <!-- <div class="card-header jumbotron"> -->
+                <!-- <h2>Restaurant Menus<small>Select Menu</small></h2> -->
+               <!--  <p></p>
+                <div id="top-search-wrap">
+                    <input type="text">
+                </div> -->
+                <!-- <div class="chat-search">
+                    <div class="fg-line">
+                        <input type="search" class="form-control" ng-model="Menus"   placeholder="Search Menu ">
+                    </div>
+                </div> -->
+            <!-- </div> -->
+       <!--  </div>
+    </div>
+
+
+    <div class="card" ng-controller="MenuController">
+        <div class="card-body card-padding">
+ -->
+             <!-- <div class="carousel ng-isolate-scope" >
+                <div class="carousel-inner">
+                    <div ng-transclude="" class="item text-center ng-isolate-scope active" >
+                        <a href="">
+                            <img class="ng-scope" style="width: 100%;" src="img/gobi.jpg">
+                            <div  class="carousel-caption ng-scope">
+                                <h3 class="ng-binding">Second Slide Label</h3>
+                            </div>
+                        <a/>
+                    </div>
+                </div>
+            </div>
+             <br>
+            <br> -->
+            <br>
+			<div id="gobi" >
+			<div class="carousel ng-isolate-scope col-sm-6 col-xs-12"  ng-repeat="Menus in MenuData">
+  
+                <div class="carousel-inner" >
+                
+                    <div  class="item text-center ng-isolate-scope active" >
+                        <a href="#subMenu/={{Menus.id}}" >
+                        <img class="ng-scope" style="width: 100%;" src="{{Menus.image}}" alt="assets/background/55c70d325c753.jpg">
+                        <div  class="carousel-caption ng-scope">
+                                <h3 class="ng-binding">{{Menus.name}}</h3>
+                                <!-- <p class="ng-binding">{{Menus.name}} Categories....</p> -->
+                      </div>
+                        </a>
+                    </div>
+                        
+                </div>
+                <br>
+                <br>
+
+            </div>
+        </div>
+          
+<!--   <div class="listview " ng-repeat="Menus in MenuData  | filter:Menus">
+    <a href="#subMenu/={{Menus.id}}" class="lv-item">
+        <div class="media">
+            <div class="pull-left p-relative">
+                <img alt="" src="{{Menus.image}}" class="lv-img-sm">
+            </div>
+            <div class="media-body">
+                <div class="lv-title"id="menu-size">{{Menus.name}}</div>
+                <small class="lv-small">{{Menus.name}} Categories</small>
+            </div>
+            <div class="p-relative pull-right">
+                <i class="md-chevron-right md-lg"></i>
+            </div>
+        </div>
+    </a> -->
+                <!-- <a href="#subMenu" class="lv-item">
+                    <div class="media">
+                        <div class="pull-left p-relative">
+                            <img alt="" src="img/br2.jpg"class="lv-img-sm">
+                        </div>
+                        <div class="media-body">
+                            <div class="lv-title"id="menu-size">Foods</div>
+                            <small class="lv-small">Food Categories</small>
+                        </div>
+                         <div class="p-relative pull-right">
+                            <i class="md-chevron-right md-lg"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#subMenu" class="lv-item">
+                    <div class="media">
+                        <div class="pull-left p-relative">
+                            <img alt="" src="img/dessert-1.jpg" class="lv-img-sm">
+                        </div>
+                        <div class="media-body">
+                            <div class="lv-title"id="menu-size">Ice Cream</div>
+                            <small class="lv-small">Ice Cream Categories</small>
+                        </div>
+                         <div class="p-relative pull-right">
+                            <i class="md-chevron-right md-lg"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#subMenu" class="lv-item">
+                    <div class="media">
+                        <div class="pull-left p-relative">
+                            <img alt="" src="img/drinks-32a.jpg" class="lv-img-sm">
+                        </div>
+                        <div class="media-body">
+                            <div class="lv-title"id="menu-size">Drinks</div>
+                            <small class="lv-small">Drinks Categories</small>
+                        </div>
+                         <div class="p-relative pull-right">
+                            <i class="md-chevron-right md-lg"></i>
+                        </div>
+                    </div>
+                </a> -->
+<!-- </div> -->
+             <!-- <a aria-expanded="false" data-toggle="dropdown" href="" ng-click="goback();" class="btn bgm-deeppurple btn-float z-depth-1 waves-effect pull-right">
+           <i class="md md-keyboard-backspace"></i>
+        </a> -->
+        </div>
+    </div>
+    <script type="text/javascript">
+
+      // open(location, '_self').close();
+
+    </script>
+
+</ion-view>
+
+

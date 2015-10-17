@@ -1,0 +1,215 @@
+<style type="text/css"> 
+.card {
+    width: auto;
+    height: 700px;
+    background: #fff;
+}
+</style>
+<ion-view>
+<div class="card" ng-controller="AddToCartCtrl">
+        <div class="card-body card-padding" style="padding-left: 10px;"  >
+            
+            <div class="card-header ">
+                <h2> Name: {{userName}} <small>Email: {{useremail}}</small></h2>
+                <br>
+                <!-- ng-show=" date =='' " -->
+                <h2 class="pull-center" >Your Orders<small>final summary</small>  </h2>
+                 <!-- <h2 class="pull-center" ng-show=" date !='' ">Your Timed Orders<small>final summary</small>  </h2> -->
+
+            </div>
+            <div class="col-sm-12" id="timed">
+                <div class="col-sm-4">
+                    <!-- <p class="c-black f-500 m-b-20">Select date</p> -->
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="md md-event"></i></span>
+                            <div class="dtp-container dropdown fg-line">
+                            <input type='text'  id="deliveryDate"  class="form-control date-picker" data-toggle="dropdown" placeholder="Delivery date">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4">
+                    <!-- <p class="c-black f-500 m-b-20">Select Time</p> -->
+                    
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="md md-access-time"></i></span>
+                            <div class="dtp-container dropdown fg-line">
+                            <input type='text' id="deliveryTime" class="form-control time-picker" data-toggle="dropdown" placeholder="Delivery Time">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+             <br>
+
+
+            <div class="button button-small  icon-right  text-center">
+                <!-- <center> -->
+                    <button ng-click="showData(OrderedItems);" class="btn bgm-green btn-md2 waves-effect t" id="hideButton">Show All Details</button>
+                    <button ng-click="getFood(OrderedItems);" id="foodSow" style="background:#c84e4e;" data-type="inverse" data-animation-in="animated flipInY"  data-animation-Out="animated flipOutY" class="btn bgm-red btn-md2 waves-effect t">Get Food</button>
+                <!-- </center> -->
+                 
+            </div>  
+            <div class=" " style="" tabindex="2"  id="orderdata">
+                 <div><br></div>
+                
+                 <center >
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price {{currency}}</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                         <tr ng-repeat="order in OrderedItems">
+                            <td>
+                                <div>
+                                    <img src="{{order.image}}" class="text-center" style="width:80px;"><br>
+                                    <span class="span-sty" >{{order.itemName}}</span><br>
+                                </div>
+                                <button type="button" class="btn bgm-teal btn-md2 waves-effect" ng-click="modelBox(order.id)" >Details</button>
+
+                                <!-- <button class="btn bgm-teal waves-effect" type="button" ng-init="resulfIngredient=displayIngredient(order.id)" data-toggle="collapse" data-target="#collapseExample{{$index}}" aria-expanded="false" aria-controls="collapseExample">Details</button>
+ -->
+                            </td>
+                            <!-- <td></td> -->
+                            <td> 
+                                <br>
+                                <input type="text" style="width:30px;" class="form-control"ng-keyup="getsubtotal($event,$index,order);" name="quantity"class="item item-input "  id="quantity" value="{{order.quantity}}">
+
+                            </td>
+                            <td> 
+                                <br><br>
+                                {{order.price}}
+                                <input type="hidden" style="width:25px"  readonly name="price"class="form-control" id="price" value="{{order.price}}">
+
+                            </td>
+                            <td> 
+                                <br><br>
+                                {{order.subTotal}}
+                                <input type="hidden" style="width:60px" readonly name="subtotal"class="form-control" id="subTotal" value="{{order.subTotal}}">
+                                 <button ng-click="removeOrder($index,order);" class="btn button-small bgm-red button-assertive"><i class="md  md-clear"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="collapse" id="collapseExample{{$index}}">
+                                  
+                                </div>
+                            </td>                            
+                        </tr>
+                    </tbody>
+                </table>
+                    </center>
+                <div class="button button-small  icon-right  text-center">
+                     Total: 
+                      {{ getTotal(); }} AED
+
+                      <br>
+                      <br>
+                      <button ng-click="getFood(OrderedItems);" id="food" data-type="inverse" data-animation-in="animated flipInY"  data-animation-Out="animated flipOutY" class="btn bgm-red btn-md2 waves-effect t">Get Food</button>
+                </div>
+            </div>
+
+          
+            <a aria-expanded="false" data-toggle="dropdown" href="" ng-click="goback();" class="btn bgm-deeppurple btn-float z-depth-1 waves-effect btn-md2 pull-right">
+                    <i class="md  md-keyboard-backspace"></i>
+                </a>
+            
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel"> <button ng-click="showIngredients(OrderedItems);" class="btn bgm-green btn-sm waves-effect t" id="hideIngButton">Show Ingredients</button></h4>
+                              </div>
+                              <div class="modal-body" id="someHide">
+                                
+                                     <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ingredients</th>
+                                                    <th>Price{{currency}}</th>
+                                                    <th>Notes</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>  
+                                            <tbody>
+                                                <tr ng-repeat="ingredients in OrderedIngItems"  >
+                                                    <td>
+                                                        {{ingredients.ingredient}}
+                                                    </td>
+                                                    <td>
+                                                        <div ng-if="ingredients.ingPrice>0">
+                                                             {{ingredients.ingPrice}}
+                                                        </div>
+                                                        <div ng-if="ingredients.ingPrice==0">
+                                                            -
+                                                        </div>
+                                                       
+                                                    </td>
+                                                    <td>
+                                                        <input id="notes{{$index}}" name="notes" value="{{ingredients.notes}}" style="width:100px;" class="form-control input-sm" ng-keyup="saveExtra($event,ingredients.id)" type="email" placeholder="Notes">
+                                                    </td>
+                                                    <td>
+                                                        <button ng-click="removeOrderItemIng($index,OrderedItems,ingredients,ingredients.id);" class="btn button-small bgm-red button-assertive"><i class="md  md-clear"></i>
+                                                            </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>     
+                                        </table>
+                                    </div>
+                                   
+                                </div>    
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" onclick="$('*#someHide').hide();" data-dismiss="modal">OK</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+    </div>
+     <script type="text/javascript">
+        // $('.datetimepicker').datetimepicker({
+        //    format: 'DD-MM-YYYY'
+        // });
+        
+        // $('.timepicker').datetimepicker({
+        //     format: 'HH:mm'
+        // });
+
+
+    </script>
+          <script >
+$(document).ready(function(){
+
+        alert("asdf");
+      
+        $('.time-picker').datetimepicker({
+            format: 'LT'
+        });
+ 
+    
+
+        $('.date-picker').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+
+
+});
+
+
+</script>
+
+</ion-view>

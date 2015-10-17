@@ -1,0 +1,35 @@
+<ion-view >
+<style type="text/css"> 
+#locationMap {
+	width: auto;
+	height: 700px;
+}
+</style>
+<div class="card bs-item z-depth-4">
+    <div class="card-header ">
+  	 	<form role="form"  novalidate name="newUser">
+  	 		<label>Select Location</label>
+ 		 	<div class="form-group input-group">
+                <span class="input-group-addon">
+                   <i class="md md-place"></i>
+                </span>	
+                <div class="select">
+                   <select ng-change="selectAction(LocationData)"  class="form-control location"  ng-model="location">
+                   		<option value="all">all</option>
+					    <option ng-repeat='value in LocationData' value="{{$index}}" >{{value.branchname }}</option>
+					</select>
+                    <!-- <select class="form-control" id="location" ng-change="locationChange()" >
+                        <option>Select Locations</option>
+                        <option value="m">India</option>
+                        <option value="f">Pakistan</option>                           
+                    </select> -->
+                </div>
+            </div>  	 			
+  	 	</form>
+    </div>
+
+ 	<div class="card-body card-padding">
+ 		  <div id="locationMap"></div>
+ 	</div>
+</div>
+</ion-view>

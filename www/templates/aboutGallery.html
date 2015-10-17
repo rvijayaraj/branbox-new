@@ -1,0 +1,87 @@
+<ion-view >
+<style type="text/css"> 
+.card{
+    height:1000px;
+}
+	
+</style>
+    <div class="card" id="profile-main">
+	<div class="pm-overview c-overflow">
+	    <div class="pmo-pic">
+		<div class="p-relative">
+		    <!--<a href="#">
+			<img class="img-responsive" src="img/headers/square/6.png" alt=""> 
+		    </a>-->
+		     <a href="" id="images"></a>
+		    <div class="dropdown pmop-message">
+			<a data-toggle="dropdown" href="" class="btn bgm-white btn-float z-depth-1">
+			    <i class="md md-message"></i>
+			</a>
+			
+			<div class="dropdown-menu">
+			    <textarea placeholder="Write something..."></textarea>
+			    
+			    <button class="btn bgm-green btn-icon"><i class="md md-send"></i></button>
+			</div>
+		    </div>
+		    
+		    <a href="" class="pmop-edit">
+			<span class="hidden-xs">About Us</span>
+		    </a>
+		</div>
+		
+		
+		<div class="pmo-stat">
+		    <h2 class="m-0 c-white"></h2>
+		    {{addressDtailsBrandName}}
+		</div>
+	    </div>
+	    
+	    <div class="pmo-block pmo-contact hidden-xs">
+		<h2>Contact</h2>
+		<ul>
+		    <li> <a class="btn contact" ng-href="tel: {{addressDtails.phoneNumber1}}"><i class="md md-phone"></i>{{addressDtailsPhoneNumber1}}</a></li>
+		    <li><i class="md md-email"></i>{{addressDtailsEmail1}}</li>
+		   <!-- <li>
+			<i class="md md-location-on"></i>
+			<address class="m-b-0">
+			    {{addressDtailsAddress1}}, <br/>
+			    {{addressDtailsAddress2}}, <br/>
+			    {{addressDtailsCity}}, <br/>
+			    {{addressDtailsState}}, <br/>
+			    {{addressDtailsCountry}}.
+			</address>
+		    </li>-->
+		</ul>
+	    </div>
+	    
+	</div>
+	
+	<div class="pm-body clearfix ">
+	    <ul class="tab-nav tn-justified">
+		<li class="waves-effect"><a href="#aboutUs">About</a></li>
+		<li class="waves-effect active"><a href="#aboutGallery">Photos</a></li>
+	    </ul>
+	    <div class=" clearfix photos well">          
+		<div class="lightbox row">    
+		    <div class="lightbox" id="lightbox">
+			<div ng-repeat="item in aboutGalleryImages" data-src="{{item.images}}" class="col-md-3 col-sm-4 col-xs-6" on-finish-render="test">
+			    <div class="lightbox-item p-item">
+				<img ng-src="{{item.images}}" alt="" class="animated flip">
+			    </div>
+			</div>  
+		    </div>                        
+		</div>
+	    </div>
+	</div>
+    </div>
+
+</ion-view>
+<script>
+    $(document).ready(function(){
+        $('.lightbox').lightGallery({
+            enableTouch: true
+        });
+    });
+    
+</script>
